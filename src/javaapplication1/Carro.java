@@ -1,6 +1,5 @@
 package javaapplication1;
 
-
 public class Carro {
 
     private String direcao = "N";
@@ -25,7 +24,7 @@ public class Carro {
                 break;
         }
         return this.mapa[i][j] == 1;
-        
+
     }
 
     public boolean lerSensorD() {
@@ -168,13 +167,13 @@ public class Carro {
     public String toString() {
         switch (this.direcao) {
             case "N":
-                return "A";
+                return "↑";
             case "S":
-                return "V";
+                return "↓";
             case "L":
-                return ">";
+                return "→";
             case "O":
-                return "<";
+                return "←";
             default:
                 return null;
         }
@@ -184,13 +183,29 @@ public class Carro {
         for (int i = 0; i < tam; i++) {
             for (int j = 0; j < tam; j++) {
                 if (i == this.posY && j == this.posX) {
-                    System.out.print(" "+this);
+                    System.out.print(" " + this);
                 } else {
-                    System.out.print(" "+this.mapa[i][j]);
+                    System.out.print(" " + this.mapa[i][j]);
                 }
             }
             System.out.println("");
         }
         System.out.println("\n\n");
     }
+
+    public String criaMapaLabel(int tam) {
+        StringBuilder retorno = new StringBuilder();
+        for (int i = 0; i < tam; i++) {
+            for (int j = 0; j < tam; j++) {
+                if (i == this.posY && j == this.posX) {
+                    retorno.append(" ").append(this);
+                } else {
+                    retorno.append(" ").append(this.mapa[i][j]);
+                }
+            }
+            retorno.append("<br/>");
+        }
+        return retorno.toString();
+    }
+
 }
