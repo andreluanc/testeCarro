@@ -1,5 +1,6 @@
 package javaapplication1;
 
+import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,7 +19,7 @@ JFrame frame = new JFrame();
 JPanel panel = new JPanel();
 panel.add(label);
 frame.add(panel);
-frame.setSize(400, 400);
+frame.setSize(640, 480);
 frame.show();
 //</editor-fold>
         for (int i = 0; i < tam; i++) {
@@ -57,7 +58,8 @@ frame.show();
 
         do {
             carro.mover();
-            carro.imprimeMapa(tam);
+            //carro.imprimeMapa(tam);
+            label.setFont(new Font("Courier", Font.PLAIN, 14));
             label.setText("<html>" + carro.criaMapaLabel(tam) + "</html>");
             Thread.sleep(400);
         } while (true);

@@ -167,13 +167,13 @@ public class Carro {
     public String toString() {
         switch (this.direcao) {
             case "N":
-                return "↑";
+                return " &#11165; ";
             case "S":
-                return "↓";
+                return " &#11167; ";
             case "L":
-                return "→";
+                return " &#10148; ";
             case "O":
-                return "←";
+                return " &#11164; ";
             default:
                 return null;
         }
@@ -198,12 +198,13 @@ public class Carro {
         for (int i = 0; i < tam; i++) {
             for (int j = 0; j < tam; j++) {
                 if (i == this.posY && j == this.posX) {
-                    retorno.append(" ").append(this);
+                    retorno.append(this);
                 } else {
-                    retorno.append(" ").append(this.mapa[i][j]);
+                    if(this.mapa[i][j] == 1)    retorno.append("&nbsp;&#9635;&nbsp;");
+                    else retorno.append("&nbsp;&#9634;&nbsp;");
                 }
             }
-            retorno.append("<br/>");
+            retorno.append("<br>");
         }
         return retorno.toString();
     }
