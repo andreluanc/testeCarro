@@ -7,10 +7,6 @@ package javaapplication1;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author lul
- */
 public class Parametros {
     int tam = 20;
     ArrayList<Integer[][]> listaMapas = new ArrayList<>();
@@ -32,7 +28,7 @@ public class Parametros {
     
     public void inserirMapa(){
         listaMapas.add(mapa);
-        carro.setMapa(mapa);
+        //carro.setMapa(mapa);
     }
 
     public ArrayList<Integer[][]> getListaMapas() {

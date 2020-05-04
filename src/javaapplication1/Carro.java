@@ -2,6 +2,9 @@ package javaapplication1;
 
 public class Carro {
 
+    private int velocidade = 1;
+    private int distSensorFrontal = 1;
+    private int distSensorLateral = 1;
     private String direcao = "N";
     private int posX;
     private int posY;
@@ -11,16 +14,16 @@ public class Carro {
         int i = this.posY, j = this.posX;
         switch (this.direcao) {
             case "N":
-                i--;
+                i-=this.distSensorFrontal;
                 break;
             case "S":
-                i++;
+                i+=this.distSensorFrontal;
                 break;
             case "L":
-                j++;
+                j+=this.distSensorFrontal;
                 break;
             case "O":
-                j--;
+                j-=this.distSensorFrontal;
                 break;
         }
         return this.mapa[i][j] == 1;
@@ -31,16 +34,16 @@ public class Carro {
         int i = this.posY, j = this.posX;
         switch (this.direcao) {
             case "N":
-                j++;
+                j+=this.distSensorLateral;
                 break;
             case "S":
-                j--;
+                j-=this.distSensorLateral;
                 break;
             case "L":
-                i++;
+                i+=this.distSensorLateral;
                 break;
             case "O":
-                i--;
+                i-=this.distSensorLateral;
                 break;
         }
         return this.mapa[i][j] == 1;
@@ -50,16 +53,16 @@ public class Carro {
         int i = this.posY, j = this.posX;
         switch (this.direcao) {
             case "N":
-                j--;
+                j-=this.distSensorLateral;
                 break;
             case "S":
-                j++;
+                j+=this.distSensorLateral;
                 break;
             case "L":
-                i--;
+                i-=this.distSensorLateral;
                 break;
             case "O":
-                i++;
+                i+=this.distSensorLateral;
                 break;
         }
         return this.mapa[i][j] == 1;
@@ -78,16 +81,16 @@ public class Carro {
     public void moverParaFrente() {
         switch (this.direcao) {
             case "N":
-                this.posY--;
+                this.posY-=this.velocidade;
                 break;
             case "S":
-                this.posY++;
+                this.posY+=this.velocidade;
                 break;
             case "L":
-                this.posX++;
+                this.posX+=this.velocidade;
                 break;
             case "O":
-                this.posX--;
+                this.posX-=this.velocidade;
                 break;
         }
     }
@@ -209,4 +212,30 @@ public class Carro {
         return retorno.toString();
     }
 
+    public int getVelocidade() {
+        return velocidade;
+    }
+
+    public void setVelocidade(int velocidade) {
+        this.velocidade = velocidade;
+    }
+
+    public int getDistSensorFrontal() {
+        return distSensorFrontal;
+    }
+
+    public void setDistSensorFrontal(int distSensorFrontal) {
+        this.distSensorFrontal = distSensorFrontal;
+    }
+
+    public int getDistSensorLateral() {
+        return distSensorLateral;
+    }
+
+    public void setDistSensorLateral(int distSensorLateral) {
+        this.distSensorLateral = distSensorLateral;
+    }
+
+    
+    
 }

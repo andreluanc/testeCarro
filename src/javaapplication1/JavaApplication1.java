@@ -12,12 +12,13 @@ public class JavaApplication1 {
         parametro.criarMapa();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame(parametro).setVisible(true);
+                new TelaInicial(parametro).setVisible(true);
 
             }
         });
 
 //        do {
+// posicao inicial do carro
 //            carro.mover();
 //            //carro.imprimeMapa(tam);
 //            label.setFont(new Font("Courier", Font.PLAIN, 14));
