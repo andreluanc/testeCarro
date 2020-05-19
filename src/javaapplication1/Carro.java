@@ -8,22 +8,35 @@ public class Carro {
     private String direcao = "N";
     private int posX;
     private int posY;
+    int tam;
     private Integer mapa[][];
 
     public boolean lerSensorF() {
         int i = this.posY, j = this.posX;
         switch (this.direcao) {
             case "N":
-                i-=this.distSensorFrontal;
+                if (i == 0) {
+                    return false;
+                }
+                i -= this.distSensorFrontal;
                 break;
             case "S":
-                i+=this.distSensorFrontal;
+                if (i == tam) {
+                    return false;
+                }
+                i += this.distSensorFrontal;
                 break;
             case "L":
-                j+=this.distSensorFrontal;
+                if (j == tam) {
+                    return false;
+                }
+                j += this.distSensorFrontal;
                 break;
             case "O":
-                j-=this.distSensorFrontal;
+                if (j == 0) {
+                    return false;
+                }
+                j -= this.distSensorFrontal;
                 break;
         }
         return this.mapa[i][j] == 1;
@@ -34,16 +47,28 @@ public class Carro {
         int i = this.posY, j = this.posX;
         switch (this.direcao) {
             case "N":
-                j+=this.distSensorLateral;
+                if (j == tam) {
+                    return false;
+                }
+                j += this.distSensorLateral;
                 break;
             case "S":
-                j-=this.distSensorLateral;
+                if (j == 0) {
+                    return false;
+                }
+                j -= this.distSensorLateral;
                 break;
             case "L":
-                i+=this.distSensorLateral;
+                if (i == tam) {
+                    return false;
+                }
+                i += this.distSensorLateral;
                 break;
             case "O":
-                i-=this.distSensorLateral;
+                if (i == 0) {
+                    return false;
+                }
+                i -= this.distSensorLateral;
                 break;
         }
         return this.mapa[i][j] == 1;
@@ -53,16 +78,104 @@ public class Carro {
         int i = this.posY, j = this.posX;
         switch (this.direcao) {
             case "N":
-                j-=this.distSensorLateral;
+                if (j == 0) {
+                    return false;
+                }
+                j -= this.distSensorLateral;
                 break;
             case "S":
-                j+=this.distSensorLateral;
+                if (j == tam) {
+                    return false;
+                }
+                j += this.distSensorLateral;
                 break;
             case "L":
-                i-=this.distSensorLateral;
+                if (i == 0) {
+                    return false;
+                }
+                i -= this.distSensorLateral;
                 break;
             case "O":
-                i+=this.distSensorLateral;
+                if (i == tam) {
+                    return false;
+                }
+                i += this.distSensorLateral;
+                break;
+        }
+        return this.mapa[i][j] == 1;
+    }
+
+    public boolean lerSensorNO() {
+        int i = this.posY, j = this.posX;
+        switch (this.direcao) {
+            case "N":
+
+                break;
+            case "S":
+
+                break;
+            case "L":
+
+                break;
+            case "O":
+
+                break;
+        }
+        return this.mapa[i][j] == 1;
+    }
+
+    public boolean lerSensorNE() {
+        int i = this.posY, j = this.posX;
+        switch (this.direcao) {
+            case "N":
+
+                break;
+            case "S":
+
+                break;
+            case "L":
+
+                break;
+            case "O":
+
+                break;
+        }
+        return this.mapa[i][j] == 1;
+    }
+
+    public boolean lerSensorSO() {
+        int i = this.posY, j = this.posX;
+        switch (this.direcao) {
+            case "N":
+
+                break;
+            case "S":
+
+                break;
+            case "L":
+
+                break;
+            case "O":
+
+                break;
+        }
+        return this.mapa[i][j] == 1;
+    }
+
+    public boolean lerSensorSE() {
+        int i = this.posY, j = this.posX;
+        switch (this.direcao) {
+            case "N":
+
+                break;
+            case "S":
+
+                break;
+            case "L":
+
+                break;
+            case "O":
+
                 break;
         }
         return this.mapa[i][j] == 1;
@@ -81,20 +194,38 @@ public class Carro {
     public void moverParaFrente() {
         switch (this.direcao) {
             case "N":
-                this.posY-=this.velocidade;
+                if (this.posY - this.velocidade < 0) {
+                    this.posY = 0;
+                } else {
+                    this.posY -= this.velocidade;
+                }
                 break;
             case "S":
-                this.posY+=this.velocidade;
+                if (this.posY + this.velocidade > tam) {
+                    this.posY = tam;
+                } else {
+                    this.posY += this.velocidade;
+                }
                 break;
             case "L":
-                this.posX+=this.velocidade;
+                if (this.posX + this.velocidade > tam) {
+                    this.posX = tam;
+                } else {
+                    this.posX += this.velocidade;
+                }
                 break;
             case "O":
-                this.posX-=this.velocidade;
+                if (this.posX - this.velocidade < 0) {
+                    this.posX = 0;
+                } else {
+                    this.posX -= this.velocidade;
+                }
+
                 break;
         }
     }
 
+    
     public void moverParaDireita() {
         switch (this.direcao) {
             case "N":
@@ -203,8 +334,11 @@ public class Carro {
                 if (i == this.posY && j == this.posX) {
                     retorno.append(this);
                 } else {
-                    if(this.mapa[i][j] == 1)    retorno.append("&nbsp;&#9635;&nbsp;");
-                    else retorno.append("&nbsp;&#9634;&nbsp;");
+                    if (this.mapa[i][j] == 1) {
+                        retorno.append("&nbsp;&#9635;&nbsp;");
+                    } else {
+                        retorno.append("&nbsp;&#9634;&nbsp;");
+                    }
                 }
             }
             retorno.append("<br>");
@@ -236,6 +370,12 @@ public class Carro {
         this.distSensorLateral = distSensorLateral;
     }
 
-    
-    
+    public int getTam() {
+        return tam;
+    }
+
+    public void setTam(int tam) {
+        this.tam = tam;
+    }
+
 }

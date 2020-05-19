@@ -127,6 +127,9 @@ public class TelaPercorre extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        parametro.carro.setPosX(5);
+        parametro.carro.setPosY(5);
+        parametro.carro.setDirecao("N");
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

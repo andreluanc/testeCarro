@@ -11,10 +11,12 @@ public class Parametros {
     int tam = 20;
     ArrayList<Integer[][]> listaMapas = new ArrayList<>();
     Carro carro = new Carro();
-    Integer mapa[][] = new Integer[tam][tam];
+    Integer mapa[][];
+
 
     public void criarMapa() {
-        
+        mapa = new Integer[tam][tam];
+        carro.setTam(tam);
         carro.setPosX(5);
         carro.setPosY(5);
 
